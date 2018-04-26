@@ -13,6 +13,18 @@ use Auth;
 
 class ActivityController extends Controller
 {
+
+    public function select(Request $request)
+    {
+        $judges = Judge::when($request->name, function ($query) use ($request) {
+            return $query->where('name', 'like', '%'.$request->name.'%');
+        })->when($request->item, function ($query) use ($request) {
+            return $query->where('item', 'like', '%'.$request->item.'%');
+        })->when($request->is_free, function ($query) use ($request) {
+            return $query->where('is_free', 'like', '%'.$request->is_free.'%');
+        })->paginate(10);
+        return view('judges.index', compact('judges',$judges));
+    }
 	public function index(Request $request)
 	{
         switch ($request->view) {
