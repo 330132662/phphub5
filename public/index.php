@@ -52,6 +52,7 @@ $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
+//echo env('APP_ENV');
 $response->send();
 
 $kernel->terminate($request, $response);

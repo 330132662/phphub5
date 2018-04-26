@@ -2,9 +2,9 @@
 // 如：db:seed 或者 清空数据库命令的地方调用
 function insanity_check()
 {
-    if (App::environment('production')) {
+   /* if (App::environment('production')) {
         exit('别傻了? 这是线上环境呀。');
-    }
+    }*/
 }
 
 function cdn($filepath)
